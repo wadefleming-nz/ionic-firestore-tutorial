@@ -15,7 +15,7 @@ export class HomePage {
     this.songs$ = this.firestoreService.getAllSongs();
   }
 
-  deleteSong(event: Event, id: string) {
-    //event.stopImmediatePropagation();
+  deleteSong(id: string) {
+    console.log('delete');
   }
 }
