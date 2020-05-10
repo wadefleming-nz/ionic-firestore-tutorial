@@ -21,4 +21,11 @@ export class FirestoreService {
   getAllSongs() {
     return this.firestore.collection<Song>(`songList`).valueChanges();
   }
+
+  getSong(songId: string) {
+    return this.firestore
+      .collection<Song>('songList')
+      .doc<Song>(songId)
+      .valueChanges();
+  }
 }

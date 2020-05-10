@@ -1,9 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ (song$ | async)?.songName }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <ng-container *ngIf="song$ | async as song">
+    <h3>Artist</h3>
+    <p>
+      The song {{ song?.songName }} was released by {{ song?.artistName }}.
+    </p>
 
+    <h3>Album</h3>
+    <p>
+      It was part of the {{ song?.albumName }} album.
+    </p>
+
+    <h3>Description</h3>
+    <p>
+      {{ song?.songDescription }}
+    </p>
+  </ng-container>
 </ion-content>
