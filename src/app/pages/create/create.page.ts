@@ -28,7 +28,9 @@ export class CreatePage {
   }
 
   async createSong() {
-    const loading = await this.loadingController.create();
+    const loading = await this.loadingController.create({
+      message: 'Saving...',
+    });
     await loading.present();
 
     const {
