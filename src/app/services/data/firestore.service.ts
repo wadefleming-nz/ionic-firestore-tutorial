@@ -16,4 +16,8 @@ export class FirestoreService {
     const id = this.firestore.createId();
     return this.firestore.doc(`songList/${id}`).set({ id, ...song });
   }
+
+  async getAllSongs() {
+    return this.firestore.collection(`songList`);
+  }
 }
