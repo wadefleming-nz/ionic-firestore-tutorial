@@ -16,16 +16,12 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>
-      Start with Ionic
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://ionicframework.com/docs/components"
-        >UI Components</a
-      >
-    </p>
-  </div>
+  <ion-list>
+    <ion-card
+      *ngFor="let song of songs$ | async"
+      [routerLink]="['/','detail', song.id]"
+      ><ion-card-header><b>{{ song.songName }}</b></ion-card-header
+      ><ion-card-content>{{ song.artistName }}</ion-card-content></ion-card
+    ></ion-list
+  >
 </ion-content>
