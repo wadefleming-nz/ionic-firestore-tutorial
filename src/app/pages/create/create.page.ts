@@ -31,10 +31,12 @@ export class CreatePage {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    const albumName = this.createSongForm.value.albumName;
-    const artistName = this.createSongForm.value.artistName;
-    const songDescription = this.createSongForm.value.songDescription;
-    const songName = this.createSongForm.value.songName;
+    const {
+      albumName,
+      artistName,
+      songDescription,
+      songName,
+    } = this.createSongForm.value;
 
     await this.firestoreService.createSong({
       albumName,
