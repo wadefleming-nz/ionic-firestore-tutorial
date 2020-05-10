@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class FirestoreService {
   constructor() {}
 
-  createSong(song: {
+  async createSong(song: {
     albumName: string;
     artistName: string;
     songDescription: string;

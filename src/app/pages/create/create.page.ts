@@ -36,7 +36,7 @@ export class CreatePage {
     const songDescription = this.createSongForm.value.songDescription;
     const songName = this.createSongForm.value.songName;
 
-    this.firestoreService.createSong({
+    await this.firestoreService.createSong({
       albumName,
       artistName,
       songDescription,
