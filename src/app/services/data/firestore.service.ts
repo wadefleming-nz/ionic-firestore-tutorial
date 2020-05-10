@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Song } from 'src/app/models/song.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +15,10 @@ export class FirestoreService {
     songName: string;
   }) {
     const id = this.firestore.createId();
-    return this.firestore.doc(`songList/${id}`).set({ id, ...song });
+    return await this.firestore.doc(`songList/${id}`).set({ id, ...song });
   }
 
-  async getAllSongs() {
-    return this.firestore.collection(`songList`);
+  getAllSongs() {
+    return this.firestore.collection<Song>(`songList`).valueChanges();
   }
 }
