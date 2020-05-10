@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 export class FirestoreService {
   constructor() {}
 
-  createSong(
-    albumName: string,
-    artistName: string,
-    songDescription: string,
-    songName: string
-  ) {}
+  createSong(song: {
+    albumName: string;
+    artistName: string;
+    songDescription: string;
+    songName: string;
+  }) {}
 }
