@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/firestore';
 import { Song } from 'src/app/models/song.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirestoreService {
-  constructor(public firestore: AngularFirestore) {}
+  songListPath = 'songList';
+  songCollection: AngularFirestoreCollection<Song>;
+
+  constructor(public firestore: AngularFirestore) {
+    this.songCollection = this.firestore.collection<Song>(this.songListPath);
+  }
 
   async createSong(song: {
     albumName: string;
@@ -15,21 +23,18 @@ export class FirestoreService {
     songName: string;
   }) {
     const id = this.firestore.createId();
-    return await this.firestore.doc(`songList/${id}`).set({ id, ...song });
+    return await this.songCollection.doc(id).set({ id, ...song });
   }
 
   getAllSongs() {
-    return this.firestore.collection<Song>(`songList`).valueChanges();
+    return this.songCollection.valueChanges();
   }
 
   getSong(id: string) {
-    return this.firestore
-      .collection<Song>('songList')
-      .doc<Song>(id)
-      .valueChanges();
+    return this.songCollection.doc<Song>(id).valueChanges();
   }
 
   async deleteSong(id: string) {
-    await this.firestore.collection<Song>(`songList`).doc(id).delete();
+    await this.songCollection.doc(id).delete();
   }
 }
