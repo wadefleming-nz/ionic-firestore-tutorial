@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FirestoreService } from '../services/data/firestore.service';
 import { Observable } from 'rxjs';
 import { Song } from '../models/song.model';
-import { AlertController } from '@ionic/angular';
+import { AlertController, IonItemSliding } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -19,13 +19,22 @@ export class HomePage {
     this.songs$ = this.firestoreService.getAllSongs();
   }
 
-  async deleteSong(id: string, name: string) {
+  async deleteSong(id: string, name: string, slidingItem: IonItemSliding) {
     const alert = await this.alertController.create({
       header: 'Delete Song',
       message: `Are you sure you want to delete '${name}'?`,
       buttons: [
-        { text: 'Cancel', role: 'cancel', cssClass: 'secondary' },
-        { text: 'OK', handler: () => this.firestoreService.deleteSong(id) },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: async () => await slidingItem.close(),
+        },
+        {
+          text: 'OK',
+          handler: async () => {
+            await this.firestoreService.deleteSong(id);
+          },
+        },
       ],
     });
 

@@ -11,7 +11,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item-sliding *ngFor="let song of songs$ | async">
+    <ion-item-sliding *ngFor="let song of songs$ | async" #slidingItem>
       <ion-item [routerLink]="['/','detail', song.id]">
         <ion-grid
           ><ion-row
@@ -23,7 +23,7 @@
         ><ion-button
           color="danger"
           expand="full"
-          (click)="deleteSong(song.id, song.songName)"
+          (click)="deleteSong(song.id, song.songName, slidingItem)"
           ><ion-icon name="trash" slot="start" expand="full"></ion-icon
           >Delete</ion-button
         ></ion-item-options
