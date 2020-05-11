@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-title>{{ (song$ | async)?.songName }}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ (song$ | async)?.songName }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
