@@ -21,9 +21,9 @@ export class CreatePage {
   ) {
     this.createSongForm = formBuilder.group({
       albumName: ['', Validators.required],
-      artistName: ['', Validators.required],
-      songDescription: ['', Validators.required],
-      songName: ['', Validators.required],
+      artistName: [''],
+      songDescription: [''],
+      songName: [''],
     });
   }
 
