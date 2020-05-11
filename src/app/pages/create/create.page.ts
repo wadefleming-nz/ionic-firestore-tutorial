@@ -20,10 +20,10 @@ export class CreatePage {
     formBuilder: FormBuilder
   ) {
     this.createSongForm = formBuilder.group({
-      albumName: ['', Validators.required],
+      albumName: [''],
       artistName: [''],
       songDescription: [''],
-      songName: [''],
+      songName: ['', Validators.required],
     });
   }
 
