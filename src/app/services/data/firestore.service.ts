@@ -22,10 +22,14 @@ export class FirestoreService {
     return this.firestore.collection<Song>(`songList`).valueChanges();
   }
 
-  getSong(songId: string) {
+  getSong(id: string) {
     return this.firestore
       .collection<Song>('songList')
-      .doc<Song>(songId)
+      .doc<Song>(id)
       .valueChanges();
+  }
+
+  async deleteSong(id: string) {
+    await this.firestore.collection<Song>(`songList`).doc(id).delete();
   }
 }

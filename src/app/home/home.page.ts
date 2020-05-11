@@ -16,6 +16,6 @@ export class HomePage {
   }
 
   deleteSong(id: string) {
-    console.log('delete');
+    this.firestoreService.deleteSong(id);
   }
 }
