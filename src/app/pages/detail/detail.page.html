@@ -7,21 +7,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ng-container *ngIf="song$ | async as song">
-    <h3>Artist</h3>
-    <p>
+<ion-content>
+  <ion-card class="ion-padding-vertical" *ngIf="song$ | async as song">
+    <ion-card-title class="ion-padding-horizontal">Artist</ion-card-title>
+    <ion-card-content>
       The song {{ song?.songName }} was released by {{ song?.artistName }}.
-    </p>
-
-    <h3>Album</h3>
-    <p>
+    </ion-card-content>
+    <ion-card-title class="ion-padding-horizontal">Album</ion-card-title>
+    <ion-card-content>
       It was part of the {{ song?.albumName }} album.
-    </p>
-
-    <h3>Description</h3>
-    <p>
+    </ion-card-content>
+    <ion-card-title class="ion-padding-horizontal">Description</ion-card-title>
+    <ion-card-content>
       {{ song?.songDescription }}
-    </p>
-  </ng-container>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
